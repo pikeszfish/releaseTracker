@@ -1,0 +1,2 @@
+coreos/etcd:v3.2.10
+kubernetes/kubernetes:v1.7.12-beta.0

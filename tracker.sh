@@ -1,9 +1,11 @@
 #!/bin/bash
 set -e
 
-TARGET_LIST_PATH="./target.list"
-HISTORY_INFO_PATH="./history.list"
-MAIL_LIST_PATH="./mail.list"
+BASEDIR=$(dirname "$0")
+
+TARGET_LIST_PATH=${BASEDIR}"/target.list"
+HISTORY_INFO_PATH=${BASEDIR}"/history.list"
+MAIL_LIST_PATH=${BASEDIR}"/mail.list"
 
 function print_usage() {
     echo "Usage: "
@@ -50,6 +52,8 @@ function send_email() {
 function main() {
     TARGET_LIST=`get_target_list ${TARGET_LIST_PATH}`
     for line in $TARGET_LIST; do
+        echo ${line}
+
         repo=`get_target_repo ${line}`
         current_release=`get_target_current_release ${line}`
 
@@ -62,6 +66,8 @@ function main() {
             email_title="githubReleaseTracker: ${repo} release ${current_release} to ${latest_release}"
             email_content="Damn it. ${repo} release ${current_release} to ${latest_release}. release_page_url: ${release_page_url}"
 
+            echo ${email_title}
+
             send_email "${email_title}" "${email_content}" >> ${HISTORY_INFO_PATH}
             renew_target_list_file ${repo} ${current_release} ${latest_release}
 
@@ -73,6 +79,7 @@ function main() {
             echo ${log} >> ${HISTORY_INFO_PATH}
             echo >> ${HISTORY_INFO_PATH}
         fi
+        sleep 20
     done
 }
 

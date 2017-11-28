@@ -3,6 +3,7 @@ kubernetes/kubernetes:v1.7.12-beta.0
 kubernetes/dns:1.14.7
 kubernetes/ingress-nginx:nginx-0.9.0-beta.18
 moby/moby:v17.03.2-ce
+docker/docker-ce:v17.11.0-ce
 docker/compose:1.17.1
 projectcalico/calico:v3.0.0-beta1
 projectcalico/calicoctl:v2.0.0-beta1

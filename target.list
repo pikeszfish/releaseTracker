@@ -1,2 +1,14 @@
 coreos/etcd:v3.2.10
 kubernetes/kubernetes:v1.7.12-beta.0
+kubernetes/dns:1.14.7
+kubernetes/ingress-nginx:nginx-0.9.0-beta.18
+moby/moby:v17.03.2-ce
+docker/compose:1.17.1
+projectcalico/calico:v3.0.0-beta1
+projectcalico/calicoctl:v2.0.0-beta1
+projectcalico/felix:2.6.2
+projectcalico/libcalico-go:v1.7.3
+projectcalico/cni-plugin:v1.11.1
+projectcalico/confd:v0.12.1-calico-0.4.2
+projectcalico/bird:rr-v0.4.1
+coreos/flannel:v0.9.1

@@ -7,6 +7,11 @@ TARGET_LIST_PATH=${BASEDIR}"/target.list"
 HISTORY_INFO_PATH=${BASEDIR}"/history.list"
 MAIL_LIST_PATH=${BASEDIR}"/mail.list"
 
+INTERVAL=15
+
+RED='\033[0;31m'
+NC='\033[0m'
+
 function print_usage() {
     echo "Usage: "
     echo "  ./tracker"
@@ -66,7 +71,7 @@ function main() {
             email_title="githubReleaseTracker: ${repo} release ${current_release} to ${latest_release}"
             email_content="Damn it. ${repo} release ${current_release} to ${latest_release}. release_page_url: ${release_page_url}"
 
-            echo ${email_title}
+            printf "${RED}   ${email_title} ${NC} \n"
 
             send_email "${email_title}" "${email_content}" >> ${HISTORY_INFO_PATH}
             renew_target_list_file ${repo} ${current_release} ${latest_release}
@@ -79,7 +84,7 @@ function main() {
             echo ${log} >> ${HISTORY_INFO_PATH}
             echo >> ${HISTORY_INFO_PATH}
         fi
-        sleep 20
+        sleep ${INTERVAL}
     done
 }
 
